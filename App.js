@@ -3,7 +3,30 @@ import { View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
 
 function App(){
   const [img, setImg] = useState(require('./src/biscoito.png'));
+  const [textoFrase, setTextoFrase] = useState('')
 
+  let frases = [
+    "A sorte favorece os corajosos.",
+    "Que a sorte esteja sempre ao seu lado.",
+    "Acredite na sorte, mas não dependa dela.",
+    "Sorte é o que acontece quando a preparação encontra a oportunidade.",
+    "Que cada amanhecer traga consigo uma pitada extra de sorte.",
+    "A sorte sorri para aqueles que continuam tentando.",
+    "A sorte é o resultado de escolhas bem feitas.",
+    "Que a sorte seja sua companheira constante.",
+    "Nunca subestime o poder da sorte, mas lembre-se de que você também cria sua própria sorte."
+  ];
+
+  function quebraBiscoito(){
+    let numeroAleatorio = Math.floor(Math.random() * frases.length)
+    setTextoFrase('"' + frases[numeroAleatorio] + '"');
+    setImg(require('./src/biscoitoAberto.png'));
+  }
+  
+  function reiniciarBiscoito(){
+    setTextoFrase('');
+    setImg(require('./src/biscoito.png'));
+  }
 
   return(
   <View style={styles.container}>
@@ -13,15 +36,15 @@ function App(){
       style={styles.img}
     />
 
-    <Text style={styles.textFrase}>"Está é minha frase do biscoito."</Text>
+    <Text style={styles.textFrase}>{textoFrase}</Text>
 
-    <TouchableOpacity style={styles.btn} onPress={() => alert('teste')}>
+    <TouchableOpacity style={styles.btn} onPress={quebraBiscoito}>
       <View style={styles.btnArea}>
         <Text style={styles.btnTexto}>Quebrar biscoito</Text>
       </View>
     </TouchableOpacity>
 
-    <TouchableOpacity style={[styles.btn, {marginTop:15, borderColor:'#121212'}]} onPress={() => alert('teste')}>
+    <TouchableOpacity style={[styles.btn, {marginTop:15, borderColor:'#121212'}]} onPress={reiniciarBiscoito}>
       <View style={styles.btnArea}>
         <Text style={[styles.btnTexto, {color:'#121212'}]}>Reiniciar biscoito</Text>
       </View>
