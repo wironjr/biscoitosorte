@@ -19,8 +19,8 @@ function App(){
 
   function quebraBiscoito(){
     let numeroAleatorio = Math.floor(Math.random() * frases.length)
-    setTextoFrase('"' + frases[numeroAleatorio] + '"');
     setImg(require('./src/biscoitoAberto.png'));
+    setTextoFrase('"' + frases[numeroAleatorio] + '"');
   }
   
   function reiniciarBiscoito(){
